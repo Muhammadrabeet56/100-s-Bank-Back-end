@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+      padding: 20px;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      margin: auto;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #0056b3;
+    }
+    .footer {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Loan Status Update</h1>
+      <p>100's Rupee Bank</p>
+    <div class="section">
+      <p>Dear {{USER_NAME}},</p>
+      <p>We hope this message finds you well. This is to inform you about the current status of your recent loan application.</p>
+    </div>
+
+    <div class="section">
+      <p><span class="highlight">User ID:</span> {{USER_ID}}</p>
+      <p><span class="highlight">Email:</span> {{USER_EMAIL}}</p>
+      <p><span class="highlight">Registration Number:</span> {{REGISTRATION_NUMBER}}</p>
+      <p><span class="highlight">Loan Status:</span> {{LOAN_STATUS}}</p>
+      <p><span class="highlight">Loan Purpose:</span> {{LOAN_PURPOSE}}</p>
+      <p><span class="highlight">Loan Amount:</span> Rs. {{LOAN_AMOUNT}}</p>
+    </div>
+
+    <div class="section">
+      <p>{{STATUS_MESSAGE}}</p>
+      <p>If you have any questions or require further clarification, feel free to reach out to our support team.</p>
+    </div>
+
+    <div class="footer">
+      <p>Thank you for choosing our financial assistance services.</p>
+      <p>Best Regards,<br>100's Rupee Bank Team</p>
+    </div>
+  </div>
+</body>
+</html>
