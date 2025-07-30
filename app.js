@@ -13,21 +13,30 @@ const bodyParser = require('body-parser');
 
 
 app.use(cors({
-    origin: (origin, callback) => {
-      if (!origin) return callback(null, true); // Allow mobile apps with no origin
-      if (
-        origin.startsWith('http://192.168.') ||  // allow your local network
-        origin === 'http://localhost:8081' ||
-        origin === 'http://localhost:5173' ||
-        origin === 'https://100-s-rupee-bank-admin-portal-production.up.railway.app'     // allow if you're using web too
-      ) {
-        return callback(null, true);
-      }
-      return callback(new Error('Not allowed by CORS'));
-    },
-    methods: ['GET', 'POST', 'PUT', 'DELETE','PATCH'],
-    credentials: true,
-  }));
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // Allow mobile apps, Postman, curl, etc.
+    
+    const allowedOrigins = [
+      'http://localhost:8081',
+      'http://localhost:5173',
+      'https://100-s-rupee-bank-admin-portal-production.up.railway.app'
+    ];
+
+    if (
+      allowedOrigins.includes(origin) ||
+      origin.startsWith('http://192.168.')
+    ) {
+      return callback(null, true);
+    }
+
+    return callback(new Error('Not allowed by CORS'));
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  credentials: true
+}));
+
+// Optional but recommended for preflight requests
+app.options('*', cors());
   
 app.use('/uploads', express.static(path.join(__dirname, 'Public/uploads')));
 app.use('/applications', express.static(path.join(__dirname, 'Public/applications')));
