@@ -19,7 +19,7 @@ app.use(cors({
         origin.startsWith('http://192.168.') ||  // allow your local network
         origin === 'http://localhost:8081' ||
         origin === 'http://localhost:5173' ||
-        origin === 'https://100-s-rupee-bank-admin-portal-production.up.railway.app/'     // allow if you're using web too
+        origin === 'https://100-s-rupee-bank-admin-portal-production.up.railway.app'     // allow if you're using web too
       ) {
         return callback(null, true);
       }
