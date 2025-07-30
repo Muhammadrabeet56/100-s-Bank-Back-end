@@ -21,7 +21,10 @@ module.exports.RegisterUser = async (req,res)=>{
     const {email, password, RegNo, StudentName, phoneNo , Dept , semester , cnic } = req.body;
     console.log(req.body)
     console.log(req.file)
-    const profileImagePath = req.file ? `/uploads/${req.file.filename}` : null;
+    const profileImagePath = req.file ? req.file.path : null;
+    if (!profileImagePath) {
+        return res.status(400).json({ message: 'Profile image is required' });
+    }
     console.log(profileImagePath)
 
 
@@ -285,10 +288,10 @@ module.exports.Loanapplication = async (req, res) => {
         missingFiles
       });
     }
-      const uploadedFiles = {};
-    Object.keys(req.files || {}).forEach(field => {
-      uploadedFiles[field] = req.files[field][0].path.replace('public', '');
-    });
+   const uploadedFiles = {};
+      Object.keys(req.files || {}).forEach(field => {
+        uploadedFiles[field] = req.files[field][0].path; // Cloudinary URL
+      });
     console.log('Uploaded files paths:', uploadedFiles);
 
     // Prepare application data

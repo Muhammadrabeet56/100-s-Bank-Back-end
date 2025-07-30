@@ -6,10 +6,11 @@ const UserControllers = require('../Controllers/User.Controller')
 const middlewares = require('../middlewares/Auth')
 const upload = require('../middlewares/Multer')
 const applicationUpload = require('../middlewares/applicationMulter');
+const parser = require('../middlewares/CloudinaryMulter');
 
 
 
- router.post('/register', upload.single("profileImage"), [
+ router.post('/register', parser.single("profileImage"), [
      body('email').isEmail().withMessage('Invalid Email'),
      body('password').isLength({min: 8}).withMessage('Password must be at least 8 characters long'),
      body('RegNo').isLength({min: 10}).withMessage('Registration Number must be 10 characters long'),
@@ -46,7 +47,13 @@ router.post('/logout', UserControllers.logoutUser );
 router.get('/showData',middlewares.authuser, UserControllers.ShowData)
 
 router.post('/application',middlewares.authuser,
-    applicationUpload,
+     parser.fields([
+    { name: 'cnicFrontImage', maxCount: 1 },
+    { name: 'cnicBackImage', maxCount: 1 },
+    { name: 'electricityBillImage', maxCount: 1 },
+    { name: 'gasBillImage', maxCount: 1 },
+    { name: 'waterBillImage', maxCount: 1 },
+  ]),
   // middlewares.authuser, [
   //   body('studentName').notEmpty().withMessage('Student Name is required'),
   //   body('regNo').notEmpty().withMessage('Registration Number is required'),
