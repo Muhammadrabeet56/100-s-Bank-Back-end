@@ -1,0 +1,16 @@
+# React Native
+node_modules/
+.expo/
+android/
+ios/
+*.log
+*.lock
+.env
+.DS_Store
+.idea/
+.vscode/
+coverage/
+build/
+dist/
+web-build/
+.env
