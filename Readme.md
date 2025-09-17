@@ -275,8 +275,6 @@ Complete API documentation is available at:
 ## 👥 Team
 
 - Backend Lead: Muhammadrabeet56
-- Database Administrator: [DBA Name]
-- Security Engineer: [Security Lead]
 
 ## 📄 License
 
@@ -285,9 +283,8 @@ This project is proprietary and confidential. Unauthorized copying, modification
 ## 🆘 Support
 
 For technical support:
-- Email: [support-email]
+- Email: muhammadrabeet15@gmail.com 
 - Issue Tracker: GitHub Issues
-- API Docs: [Documentation Link]
 
 - Node.js (v18 or later)
 - npm
